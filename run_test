@@ -1,0 +1,41 @@
+#! /bin/sh
+
+echo Running tests of bogoscheme interpreter...
+echo
+
+echo Testing primitives...
+echo This should print 3 \#t values:
+echo ./bs tests/test_primitives.bs
+./bs tests/test_primitives.bs
+echo
+
+echo Testing factorial...
+echo This should print 1 \#t value:
+echo ./bs tests/test_factorial.bs
+./bs tests/test_factorial.bs
+echo
+
+echo Testing scoping...
+echo This should print 3 \#t values:
+echo ./bs tests/test_scoping.bs
+./bs tests/test_scoping.bs
+echo
+
+echo Testing lambda expressions...
+echo This should print 2 \#t values:
+echo ./bs tests/test_lambda.bs
+./bs tests/test_lambda.bs
+echo
+
+echo Testing multi-argument functions...
+echo This should print 1 \#t value:
+echo ./bs tests/test_multi.bs
+./bs tests/test_multi.bs
+echo
+
+echo Testing internal defines...
+echo This should print 1 \#t value:
+echo ./bs tests/test_intdef.bs
+./bs tests/test_intdef.bs
+echo
+
