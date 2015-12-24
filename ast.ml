@@ -41,12 +41,6 @@ let rec ast_of_sexpr sx =
        | S.Expr_atom (S.Atom_id id) -> id
        | _ -> failwith "Invalid id"
      in
-(*
-     match l with
-     | S.Expr_list e1::e2::[] -> 
-         Expr_lambda (List.map id_of_sexpr e1, [ast_of_sexpr e2])
-     | _ -> failwith "Invalid lambda"
-*)
      match l with
      | (S.Expr_list vars)::sexprs ->
           Expr_lambda ((List.map id_of_sexpr vars), List.map ast_of_sexpr sexprs)
@@ -57,18 +51,6 @@ let rec ast_of_sexpr sx =
          Expr_apply (ast_of_sexpr func, List.map ast_of_sexpr params)
      | _ -> failwith "Invalid apply"
    in
-   (*
-   match sx with
-   | S.Expr_atom atom -> ast_of_atom atom
-   | S.Expr_list (S.Expr_atom atom::tl) ->
-       begin match atom with
-         | S.Atom_id "define" -> ast_of_define tl
-         | S.Atom_id "if" -> ast_of_if tl
-         | S.Atom_id "lambda" -> ast_of_lambda tl
-         | _ -> ast_of_apply (S.Expr_atom atom::tl)
-       end
-       | _ -> failwith "Invalid expression"
-    *)
    match sx with
    | S.Expr_atom atom -> ast_of_atom atom
    | S.Expr_list sexprs ->
